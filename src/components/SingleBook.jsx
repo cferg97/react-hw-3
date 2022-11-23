@@ -9,8 +9,8 @@ class SingleBook extends Component {
 
     render(){
     return (<Card onClick = {() => { console.log("clicked", this.props.book)
-     this.setState({selectedBook: true})} }bg="secondary" text="light" style={{height: "34rem"}} className="mb-3">
-        <Card.Img variant="top" src={this.props.book.img} className="imgTop"/>
+     this.setState({selectedBook: true})}} bg="secondary" text="light" style={{height: "34rem"}} className="mb-3 mt-2">
+        <Card.Img variant="top" src={this.props.book.img} key={this.props.book.asin} className="imgTop"/>
             <Card.Body>
                 <Card.Header>
                     {this.props.book.title}

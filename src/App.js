@@ -5,7 +5,7 @@ import WarningSign from './components/WarningSign';
 import MyBadge from './components/MyBadge';
 import BookList from './components/BookList';
 import scifi from '../src/data/scifi.json'
-import SearchBar from './components/SearchBar';
+
 
 function App() {
   return (
@@ -13,11 +13,8 @@ function App() {
       <WarningSign text="SALE NOW ON!">
       </WarningSign>
 
-      <h1>Hello! <MyBadge color="success" text="Badge!"/></h1>
+      <h1>Hello! <MyBadge color="success" text="Strive Books!"/></h1>
 
-      <Container className='d-flex justify-content-center mb-4'>
-        <SearchBar />
-      </Container>
       
       <Container className="d-flex text-center justify-items-center">
       <BookList ListOfBooks = {scifi}/>
