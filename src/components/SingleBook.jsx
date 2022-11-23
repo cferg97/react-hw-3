@@ -7,9 +7,14 @@ class SingleBook extends Component {
         selectedBook: false
     }
 
+    toggleBook = () => {
+        this.setState(prevState => ({ selectedBook: !prevState.selectedBook }))
+    }
+
+    
     render(){
-    return (<Card onClick = {() => { console.log("clicked", this.props.book)
-     this.setState({selectedBook: true})}} bg="secondary" text="light" style={{height: "34rem"}} className="mb-3 mt-2">
+    const { selectedBook } = this.state
+    return (<Card onClick = {this.toggleBook} className={`${selectedBook ? "card-border mb-3 mt-2 card-hover card-grow" : "mb-3 mt-2 card-hover"}`} bg="secondary" text="light" style={{height: "34rem"}}>
         <Card.Img variant="top" src={this.props.book.img} key={this.props.book.asin} className="imgTop"/>
             <Card.Body>
                 <Card.Header>

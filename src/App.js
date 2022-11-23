@@ -13,10 +13,10 @@ function App() {
       <WarningSign text="SALE NOW ON!">
       </WarningSign>
 
-      <h1>Hello! <MyBadge color="success" text="Strive Books!"/></h1>
+      <h1>Hello <MyBadge color="primary" text="Strive Books!"/></h1>
 
       
-      <Container className="d-flex text-center justify-items-center">
+      <Container className="d-flex text-center justify-content-center">
       <BookList ListOfBooks = {scifi}/>
       </Container>
     </div>

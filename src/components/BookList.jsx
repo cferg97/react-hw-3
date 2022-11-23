@@ -12,26 +12,27 @@ class BookList extends Component {
 
     render(){
     return (
-        <Container>
-            <Form className="d-flex w-100">
+        <Container className="text-center">
+            <Form className="p-5">
                 <FormControl
                   type="search"
-                  placeholder="Search"
-                  className="mr-2"
+                  placeholder="Search for Books"
+                  className="mr-2 text-center"
                   aria-label="Search"
                   onChange={(e) =>
                     this.setState({ searchQuery: e.target.value })
                   }
                 />
               </Form>
+              <h2 className="mt-2">Best Sellers</h2>
               <Row>
           {this.props.ListOfBooks
-            .filter((element) =>
-              element.title.toLowerCase().includes(this.state.searchQuery)
+            .filter((book) =>
+              book.title.toLowerCase().includes(this.state.searchQuery)
             )
-            .map((element) => (
-              <Col xs={4} md={3} className="mt-2 mb-2">
-                <SingleBook book={element} />
+            .map((book) => (
+              <Col key={book.asin} sm={6} xs={12} md={4} lg={3} className="mt-2 mb-2">
+                <SingleBook book={book} />
               </Col>
             ))}
         </Row>
