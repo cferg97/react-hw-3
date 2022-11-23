@@ -2,11 +2,18 @@ import SingleBook from "./SingleBook";
 import { Row, Col, Container } from "react-bootstrap"
 import { Component } from "react"
 
-function FilterList () {
-    
-}
 
 class BookList extends Component {
+    state = {
+        searchQuery: ""
+    }
+
+    onChangeHandler = (value) => {
+        this.setState({
+            searchQuery: this.state.searchQuery
+        })
+    }
+
     render(){
     return (
         <Container>
