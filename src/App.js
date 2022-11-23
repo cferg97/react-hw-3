@@ -20,7 +20,7 @@ function App() {
       </Container>
       
       <Container className="d-flex text-center justify-items-center">
-      <BookList ListOfBooks = {scifi} />
+      <BookList ListOfBooks = {scifi}/>
       </Container>
     </div>
   );

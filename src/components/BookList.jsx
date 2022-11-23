@@ -4,22 +4,12 @@ import { Component } from "react"
 
 
 class BookList extends Component {
-    state = {
-        searchQuery: ""
-    }
-
-    onChangeHandler = (value) => {
-        this.setState({
-            searchQuery: this.state.searchQuery
-        })
-    }
-
     render(){
     return (
         <Container>
             <Row>
                 {this.props.ListOfBooks.map((book) => (
-                    <Col sm={6} md={4}><SingleBook book={book} /></Col>
+                    <Col sm={6} md={4}><SingleBook book={book}/></Col>
                 ))}
             </Row>
         </Container>
