@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css"
+import { Container } from "react-bootstrap"
+import WarningSign from './components/WarningSign';
+import MyBadge from './components/MyBadge';
+import BookList from './components/BookList';
+import scifi from '../src/data/scifi.json'
+import SearchBar from './components/SearchBar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App d-flex text-center flex-column">
+      <WarningSign text="SALE NOW ON!">
+      </WarningSign>
+
+      <h1>Hello! <MyBadge color="success" text="Badge!"/></h1>
+
+      <Container className='d-flex justify-content-center mb-4'>
+        <SearchBar />
+      </Container>
+      
+      <Container className="d-flex text-center justify-items-center">
+      <BookList ListOfBooks = {scifi} />
+      </Container>
     </div>
   );
 }
