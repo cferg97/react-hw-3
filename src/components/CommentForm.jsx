@@ -1,8 +1,10 @@
 import { Component } from "react"
 import { Form, Button } from "react-bootstrap"
+import Alerts from "./AlertComponent"
 
 class CommentForm extends Component {
     state = {
+        isError: false,
         comment: {
             rate: "1",
             comment: "",
@@ -48,11 +50,17 @@ onSubmitHandler = async (e) => {
                 })
             }
             else{
+                this.setState({
+                    isError: true
+                })
                 console.log("Something went wrong")
+                alert("Couldn't post your comment")
+
             }
     }
     catch (error) {
         console.log(error)
+        alert("Couldn't post your comment")
     }
 }
 
@@ -60,12 +68,12 @@ onSubmitHandler = async (e) => {
 render() {
     return(
     <div>
+        
     <Form onSubmit={this.onSubmitHandler}>
         <Form.Group>
         <Form.Label>Select a rating</Form.Label>
         <Form.Control
             as="select" 
-            single
             value={this.state.comment.rate}
             onChange={(e) => this.onChangeHandler(e.target.value, "rate")}
         >
@@ -90,6 +98,7 @@ render() {
          Post Comment
         </Button>
     </Form>
+
     </div>
     )
 }
