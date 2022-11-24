@@ -1,6 +1,7 @@
 import { Form, ListGroup, Spinner } from "react-bootstrap"
 import { Component } from "react"
 import Alerts from "./AlertComponent"
+import CommentForm from "./CommentForm"
 
 class CommentsSection extends Component {
 
@@ -68,6 +69,7 @@ class CommentsSection extends Component {
                 </ListGroup.Item>
             ))}
         </ListGroup>
+        <CommentForm asin={this.props.id}/>
         </div> 
      );
     }
