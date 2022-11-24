@@ -1,6 +1,6 @@
 import { Component } from "react"
 import { Form, Button } from "react-bootstrap"
-import Alerts from "./AlertComponent"
+
 
 class CommentForm extends Component {
     state = {
@@ -36,7 +36,7 @@ onSubmitHandler = async (e) => {
                 "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZjZjQyMmQ0YmUzZDAwMTU4NDVmZWYiLCJpYXQiOjE2NjkyOTMwOTgsImV4cCI6MTY3MDUwMjY5OH0.jUVd4New538rXXxi7q_euMzWMkjPDLnD4ivPiyaRpXc",
                 'Content-Type': 'application/json'
                 
-              },
+              }
             })
             console.log(response)
             if (response.ok) {
