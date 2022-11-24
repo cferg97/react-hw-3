@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 
+
 class CommentForm extends Component {
   state = {
     isError: false,
@@ -38,6 +39,7 @@ class CommentForm extends Component {
       );
       console.log(response);
       if (response.ok) {
+        this.props.fetchComments()
         alert("Your comment has been posted");
         this.setState({
           comment: {
@@ -46,6 +48,7 @@ class CommentForm extends Component {
             elementId: this.props.asin,
           },
         });
+
       } else {
         this.setState({
           isError: true,

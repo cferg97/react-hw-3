@@ -1,7 +1,9 @@
-import { ListGroup, Spinner } from "react-bootstrap";
+import { ListGroup, Spinner, Button } from "react-bootstrap";
 import { Component } from "react";
 import Alerts from "./AlertComponent";
 import CommentForm from "./CommentForm";
+import DeleteComment from "./deleteComment";
+
 
 class CommentsSection extends Component {
   state = {
@@ -27,6 +29,7 @@ class CommentsSection extends Component {
           comments: data,
           isLoading: false,
         });
+        
       } else {
         console.log("there was a problem");
         setTimeout(() => {
@@ -45,6 +48,8 @@ class CommentsSection extends Component {
     }
   };
 
+
+
   componentDidMount() {
     this.fetchComments(this.props.id);
   }
@@ -62,10 +67,11 @@ class CommentsSection extends Component {
           {this.state.comments.map((c) => (
             <ListGroup.Item key={c._id} variant="info">
               {c.rate} out of 5<p>{c.comment}</p>
+              <DeleteComment commentID={c._id} fetchComments={this.fetchComments}/>
             </ListGroup.Item>
           ))}
         </ListGroup>
-        <CommentForm asin={this.props.id} />
+        <CommentForm asin={this.props.id} fetchComments={this.fetchComments} />
       </div>
     );
   }
