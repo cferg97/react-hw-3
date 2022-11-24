@@ -1,6 +1,6 @@
 import { Component } from "react"
 import { Form, Button } from "react-bootstrap"
-import Alerts from "./AlertComponent"
+
 
 class CommentForm extends Component {
     state = {
