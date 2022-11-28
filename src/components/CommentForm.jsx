@@ -8,8 +8,8 @@ class CommentForm extends Component {
     comment: {
       rate: "1",
       comment: "",
-      elementId: this.props.book,
-    },
+      elementId: this.props.selectedBook
+    }
   };
 
   onChangeHandler = (value, fieldToSet) => {
@@ -28,7 +28,7 @@ class CommentForm extends Component {
           body: JSON.stringify({
             comment: this.state.comment.comment,
             rate: this.state.comment.rate,
-            elementId: this.props.asin,
+            elementId: this.props.selectedBook
           }),
           headers: {
             Authorization:
@@ -45,7 +45,7 @@ class CommentForm extends Component {
           comment: {
             rate: "1",
             comment: "",
-            elementId: this.props.asin,
+            elementId: this.props.selectedBook
           },
         });
 

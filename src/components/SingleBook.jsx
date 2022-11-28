@@ -8,15 +8,15 @@ class SingleBook extends Component {
 //     selectedBook: false,
 //   };
 
-  toggleBook = () => {
-    this.setState((prevState) => ({ selectedBook: !prevState.selectedBook }));
-  };
+//   toggleBook = () => {
+//     this.setState((prevState) => ({ selectedBook: !prevState.selectedBook }));
+//   };
 
   render() {
     // const { selectedBook } = this.state;
     return (
       <Card
-      onClick={() => this.props.changeSelectedBook(this.props.selectedbook.asin)}
+      onClick={() => this.props.changeSelectedBook(this.props.book.asin)}
         // className={`${
         //   selectedBook
         //     ? "card-border mb-3 mt-2 card-hover card-grow"

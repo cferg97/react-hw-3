@@ -70,6 +70,7 @@ class CommentsSection extends Component {
           </Spinner>
         )}
         {this.state.isError && <Alerts />}
+        {this.props.selectedBook && (
         <ListGroup variant="flush" className="mt-2">
           {this.state.comments.map((c) => (
             <ListGroup.Item key={c._id} variant="info">
@@ -77,8 +78,8 @@ class CommentsSection extends Component {
               <DeleteComment commentID={c._id} fetchComments={this.fetchComments}/>
             </ListGroup.Item>
           ))}
-        </ListGroup>
-        <CommentForm asin={this.props.id} fetchComments={this.fetchComments} />
+        </ListGroup>)}
+        <CommentForm fetchComments={this.fetchComments} selectedBook={this.props.selectedBook}/>
       </div>
     );
   }

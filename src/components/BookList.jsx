@@ -17,7 +17,7 @@ class BookList extends Component {
 
   render() {
     return (
-      <Container className="text-center">
+      <Container className="text-center d-flex flex-column">
         <Form className="p-5">
           <FormControl
             type="search"
@@ -29,21 +29,22 @@ class BookList extends Component {
         </Form>
         <h2 className="mt-2">Best Sellers</h2>
         <Row>
-          <Col md={6}>
+          <Col md={8}>
             {this.props.ListOfBooks.filter((book) =>
               book.title.toLowerCase().includes(this.state.searchQuery)
             ).map((book) => (
               <Col md={6} key={book.asin} className="mt-2 mb-2">
                 <SingleBook
                   book={book}
-                  selectedBook={this.changeSelectedBook}
-                  changeSelectedBook={this.state.selectedBook}
+                  changeSelectedBook={this.changeSelectedBook}
+                  selectedBook={this.state.selectedBook}
                 />
               </Col>
             ))}
           </Col>
-          <Col md={6}>
-            <CommentsSection selectedBook={this.state.selectedBook} />
+          <Col md={4}>
+          {this.state.selectedBook && (
+            <CommentsSection selectedBook={this.state.selectedBook} />)}
           </Col>
         </Row>
       </Container>
