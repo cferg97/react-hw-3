@@ -1,44 +1,53 @@
 import SingleBook from "./SingleBook";
-import { Row, Col, Container, Form, FormControl } from "react-bootstrap"
-import { Component } from "react"
-
+import { Row, Col, Container, Form, FormControl } from "react-bootstrap";
+import { Component } from "react";
+import CommentsSection from "./CommentsSection";
 
 class BookList extends Component {
+  state = {
+    searchQuery: "",
+    selectedBook: null,
+  };
 
-    state = {
-        searchQuery: ""
-    }
+  changeSelectedBook = (newValue) => {
+    this.setState({
+      selectedBook: newValue
+    })
+  }
 
-
-    render(){
+  render() {
     return (
-        <Container className="text-center">
-            <Form className="p-5">
-                <FormControl
-                  type="search"
-                  placeholder="Search for Books"
-                  className="mr-2 text-center"
-                  aria-label="Search"
-                  onChange={(e) =>
-                    this.setState({ searchQuery: e.target.value })
-                  }
-                />
-              </Form>
-              <h2 className="mt-2">Best Sellers</h2>
-              <Row>
-          {this.props.ListOfBooks
-            .filter((book) =>
+      <Container className="text-center">
+        <Form className="p-5">
+          <FormControl
+            type="search"
+            placeholder="Search for Books"
+            className="mr-2 text-center"
+            aria-label="Search"
+            onChange={(e) => this.setState({ searchQuery: e.target.value })}
+          />
+        </Form>
+        <h2 className="mt-2">Best Sellers</h2>
+        <Row>
+          <Col md={6}>
+            {this.props.ListOfBooks.filter((book) =>
               book.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((book) => (
-              <Col key={book.asin} sm={6} xs={12} md={4} lg={3} className="mt-2 mb-2">
-                <SingleBook book={book} />
+            ).map((book) => (
+              <Col md={6} key={book.asin} className="mt-2 mb-2">
+                <SingleBook
+                  book={book}
+                  selectedBook={this.changeSelectedBook}
+                  changeSelectedBook={this.state.selectedBook}
+                />
               </Col>
             ))}
+          </Col>
+          <Col md={6}>
+            <CommentsSection selectedBook={this.state.selectedBook} />
+          </Col>
         </Row>
-        </Container>
-    )
-    }
+      </Container>
+    );
+  }
 }
 export default BookList;
-

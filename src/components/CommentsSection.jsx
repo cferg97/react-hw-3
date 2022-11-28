@@ -15,7 +15,7 @@ class CommentsSection extends Component {
   fetchComments = async () => {
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/comments/${this.props.id}`,
+        `https://striveschool-api.herokuapp.com/api/comments/${this.props.selectedBook}`,
         {
           headers: {
             Authorization:
@@ -51,8 +51,15 @@ class CommentsSection extends Component {
 
 
   componentDidMount() {
-    this.fetchComments(this.props.id);
+    this.fetchComments();
   }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.selectedBook !== this.props.selectedBook) {
+      this.fetchComments()
+    }
+  }
+
 
   render() {
     return (
